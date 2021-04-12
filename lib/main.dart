@@ -20,7 +20,7 @@ class _ChartApp extends StatelessWidget {
 
 class _MyHomePage extends StatefulWidget {
   // ignore: prefer_const_constructors_in_immutables
-  _MyHomePage({Key key}) : super(key: key);
+  _MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -40,7 +40,7 @@ class _MyHomePageState extends State<_MyHomePage> {
       _ChartData('2020', 40)
     ];
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
       // Added 300 milliseconds to the series animation duration and provided it as the duration for the timer.
       Timer(Duration(milliseconds: seriesAnimation.toInt() + 300), () {
         tooltip.showByIndex(0, 2);
