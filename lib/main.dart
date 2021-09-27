@@ -28,8 +28,14 @@ class _MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<_MyHomePage> {
   double seriesAnimation = 1500;
-  TooltipBehavior tooltip =
-      TooltipBehavior(enable: true, shouldAlwaysShow: true);
+  TooltipBehavior _tooltipBehavior;
+
+  @override
+  void initState() {
+    _tooltipBehavior = TooltipBehavior(enable: true, shouldAlwaysShow: true);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<_ChartData> data = [
@@ -43,7 +49,7 @@ class _MyHomePageState extends State<_MyHomePage> {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       // Added 300 milliseconds to the series animation duration and provided it as the duration for the timer.
       Timer(Duration(milliseconds: seriesAnimation.toInt() + 300), () {
-        tooltip.showByIndex(0, 2);
+        _tooltipBehavior.showByIndex(0, 2);
       });
     });
     return Scaffold(
@@ -59,7 +65,7 @@ class _MyHomePageState extends State<_MyHomePage> {
               backgroundColor: Colors.white,
               primaryXAxis: CategoryAxis(),
               primaryYAxis: NumericAxis(minimum: 15),
-              tooltipBehavior: tooltip,
+              tooltipBehavior: _tooltipBehavior,
               series: <ChartSeries<_ChartData, String>>[
                 LineSeries<_ChartData, String>(
                   dataSource: data,
