@@ -66,7 +66,7 @@ class _MyHomePageState extends State<_MyHomePage> {
               primaryXAxis: CategoryAxis(),
               primaryYAxis: NumericAxis(minimum: 15),
               tooltipBehavior: _tooltipBehavior,
-              series: <ChartSeries<_ChartData, String>>[
+              series: <LineSeries<_ChartData, String>>[
                 LineSeries<_ChartData, String>(
                   dataSource: data,
                   animationDuration: seriesAnimation,
